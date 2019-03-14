@@ -14,3 +14,4 @@ class BaseTest():
 
     def teardown(self):
         DriverWrapper.close_driver()
+
