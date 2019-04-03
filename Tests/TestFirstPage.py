@@ -18,7 +18,7 @@ class TestFirstPage(BaseTest):
         first_page.driver.maximize_window()
         first_page.screenshot(directory, firstbaner)
         first_page.push(first_page.next_top_baner_loc)
-        time.sleep(1)
+
         first_page.screenshot(directory, secondbaner)
         first_page.push(first_page.next_top_baner_loc)
         time.sleep(1)
