@@ -22,10 +22,13 @@ class DriverWrapper(object):
 
         if browser_name == 'Chrome':
             options = webdriver.ChromeOptions()
-
             drivers_path = os.path.join(webdrivers_path, "chromedriver.exe")
+            options.add_argument('start-maximized')
+            options.add_argument('disable-infobars')
             self._driver = webdriver.Chrome(executable_path=drivers_path, chrome_options=options)
+
             self._driver.set_page_load_timeout(60)
+
 
         if browser_name == "IE":
             drivers_path = os.path.join(webdrivers_path, "IEDriverServer_32.exe")
