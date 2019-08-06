@@ -1,6 +1,8 @@
 import pytest
-
+from selenium.webdriver.chrome.webdriver import WebDriver
+from selenium import webdriver
 from utilities import settings
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 def pytest_addoption(parser):
@@ -34,3 +36,14 @@ def get_base_url(request):
     base_host = request.config.getoption("--base-url")
     request.cls.base_url = 'https://{}/'.format(base_host)
     settings.base_url = request.cls.base_url
+
+
+@pytest.fixture(scope="function")
+def get_driver(request):
+    driver: WebDriver = webdriver.Chrome(executable_path=ChromeDriverManager().install())
+    request.cls.driver = driver
+    # driver.get('https://tcb.com.ua/login/')
+    yield
+    driver.close()
+
+
