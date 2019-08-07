@@ -35,6 +35,7 @@ class BasePage():
     def move_mouse_to_element(self, element_locator):
         element = self.wait.until(EC.presence_of_element_located(element_locator))
         ActionChains(self.driver).move_to_element(element).perform()
+        return self
 
     def check_present_element(self, element_locator):
         element = self.wait.until(EC.presence_of_element_located(element_locator))
@@ -46,6 +47,6 @@ class BasePage():
             input_field = self.wait.until(EC.presence_of_element_located(locator_field))
             input_field.send_keys(param)
             return self
-        except Exception:
+        except Exception as error:
             print('input not found ')
             print(sys.exc_info()[1])
