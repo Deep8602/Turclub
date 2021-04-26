@@ -38,12 +38,12 @@ def get_base_url(request):
     settings.base_url = request.cls.base_url
 
 
-@pytest.fixture(scope="function")
-def get_driver(request):
-    driver: WebDriver = webdriver.Chrome(executable_path=ChromeDriverManager().install())
-    request.cls.driver = driver
-    # driver.get('https://tcb.com.ua/login/')
-    yield
-    driver.close()
+# @pytest.fixture(scope="function")
+# def get_driver(request):
+#     driver: WebDriver = webdriver.Chrome(executable_path=ChromeDriverManager().install())
+#     request.cls.driver = driver
+#     # driver.get('https://tcb.com.ua/login/')
+#     yield
+#     driver.close()
 
 
