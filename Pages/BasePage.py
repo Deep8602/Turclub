@@ -26,7 +26,8 @@ class BasePage():
         self.driver.add_cookie(cookie)
 
     def check_text(self, element_locator, text, error='wrong text'):
-        element = self.driver.find_element_by_css_selector(element_locator).text
+        '''takes text from the element and compares it with the given text'''
+        element = self.wait.until(EC.presence_of_element_located(element_locator)).text
         if text.lower() in element.lower():
             print(element)
         else:
@@ -38,6 +39,7 @@ class BasePage():
 
     def check_present_element(self, element_locator):
         element = self.wait.until(EC.presence_of_element_located(element_locator))
+        print(element.text)
         return element
 
     def write_in_field(self, locator_field, param):

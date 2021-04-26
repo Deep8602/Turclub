@@ -1,18 +1,24 @@
 import time
+
+import pytest
+
 from Pages.FirstPage import FirstPage
 from Tests_suites.BaseTest import BaseTest
 
+import allure
+
 
 class TestFirstPage(BaseTest):
-
+    @allure.step
+    @pytest.mark.smoke_test
     def test_screenshots_five_top_baners(self):
 
-        directory = 'D:/Automation/Turclub/screenshots/'
-        firstbaner = '1firstbaner.jpg'
-        secondbaner = '2secondbaner.jpg'
-        therdbaner = '3therdbaner.jpg'
-        fourthbaner = '4fourthbaner.jpg'
-        fifthbaner = '5fifthbaner.jpg'
+        directory = 'C:/Users/Deep/PycharmProjects/Turclub/screenshots/'
+        firstbaner = '1firstbaner.png'
+        secondbaner = '2secondbaner.png'
+        therdbaner = '3therdbaner.png'
+        fourthbaner = '4fourthbaner.png'
+        fifthbaner = '5fifthbaner.png'
 
         first_page = FirstPage()
 
@@ -32,7 +38,7 @@ class TestFirstPage(BaseTest):
 
     # def test_change_language_with_cookie(self):
     #     first_page = FirstPage()
-    #     first_page.add_your_cookie({'name': 'googtrans', 'value': '/en'})
+    #     first_page.add_your_cookie({'name': 'Admin-Language', 'value': '/en'})
     #     first_page.driver.refresh()
     #     first_page.check_text(first_page.trevel_loc, 'travel', 'english does not change')
     #
@@ -44,11 +50,12 @@ class TestFirstPage(BaseTest):
     #     first_page.driver.refresh()
     #     first_page.check_text(first_page.trevel_loc, 'Поїздки', 'ukraine does not change')
 
+    @allure.step
     def test_search_input(self):
 
         first_page = FirstPage()
-        first_page.move_mouse_to_element(first_page.search_loc)\
-            .write_in_field(first_page.search_input_loc, 'Закарпаття')
+        first_page.move_mouse_to_element(first_page.search_loc)
+        first_page.write_in_field(first_page.search_input_loc, 'Закарпаття')
         first_page.push(first_page.search_loc)
-        first_page.check_text(first_page.third_trip_loc, 'Закарпаття')
+        first_page.check_text(first_page.first_trip_loc, 'Закарпаття')
 
